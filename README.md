@@ -152,7 +152,7 @@ The learning curves for the custom model show a clear story of iterative improve
 The repository is organized to professional standards for clarity, reproducibility, and scalability, clearly separating source code, experimental notebooks, data, and outputs.
 
 ```
-.
+Transformer-from-Scratch-vs-Finetuning/
 ├── 📁 data/                  # Raw AG News dataset files
 │   └── 📁 ag_news/
 │       ├── test.parquet
@@ -191,8 +191,8 @@ To replicate this project, follow these steps:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/nabeelshan78/Transformer-AGNews-Classifier.git
-cd Transformer-AGNews-Classifier
+git clone https://github.com/nabeelshan78/Transformer-from-Scratch-vs-Finetuning.git
+cd Transformer-from-Scratch-vs-Finetuning
 ```
 
 ### 2. Set Up the Environment
