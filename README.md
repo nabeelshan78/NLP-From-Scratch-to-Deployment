@@ -68,6 +68,9 @@ The two primary models were evaluated on the same held-out test set. The fine-tu
 The final comparison shows a **+4.47% absolute improvement in test accuracy** from using a fine-tuned model. This is because the pre-trained model has already learned a deep, nuanced understanding of the English language from a massive corpus, which it can then adapt to our specific task with minimal training.
 
 <img src="outputs/comparative_performance.png" alt="Comparative Performance Bar Chart" width="1000"/>
+
+The bar plots for the custom model show a clear story of iterative improvement
+
 <img src="outputs/learning_curves.png" alt="Full Training Journey Learning Curves" height=500 width="1000"/>
 
 The learning curves for the custom model show a clear story of iterative improvement: an initial learning phase, followed by aggressive fine-tuning with Adam, and finally a "polishing" phase with `CosineAnnealingLR` to achieve the best possible performance.
@@ -111,6 +114,7 @@ The repository is organized to professional standards for clarity, reproducibili
 │
 ├── 📄 README.md               # You are here!
 └── 📄 requirements.txt        # Python dependencies for setting up the environment
+```
 
 ---
 
@@ -121,7 +125,7 @@ To replicate this project, follow these steps:
 ### Prerequisites
 - Python 3.10+
 - PyTorch 2.0+
-- Access to a GPU is recommended for training.
+- **GPU Access (Recommended):** All training and fine-tuning scripts are configured to automatically use a CUDA-enabled GPU if available. While not strictly required, using a GPU is highly recommended to replicate the training times presented in this project.
 
 ### 1. Clone the Repository
 ```bash
