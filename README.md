@@ -5,7 +5,7 @@
 ![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models%20%7C%20Spaces-yellow?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 
-An end-to-end project building a **Transformer from scratch** and fine-tuning **DistilBERT** for text classification, achieving **94.8% test accuracy** and deployed as a live, interactive demo on Hugging Face Spaces.
+An end-to-end project building a **Transformer from scratch** and fine-tuning **DistilBERT** for text classification, achieving **94.8% test accuracy** and deployed as a live, interactive demo on **Hugging Face Spaces**.
 
 ---
 
@@ -38,7 +38,7 @@ This repository documents a comprehensive investigation into Transformer-based m
 
 2.  **Phase 2: Fine-Tune a SOTA Model:** A pre-trained DistilBERT model was fine-tuned to leverage the power of transfer learning. This phase focused on the practical application of state-of-the-art tools from the Hugging Face ecosystem to achieve maximum performance.
 
-The project covers the full MLOps lifecycle: data preprocessing, model architecture design, multi-phase training, iterative optimization, final evaluation, and deployment as an interactive web application.
+The project covers the full **MLOps** lifecycle: data preprocessing, model architecture design, multi-phase training, iterative optimization, final evaluation, and deployment as an interactive web application.
 
 ---
 
