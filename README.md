@@ -1,11 +1,11 @@
-# End-to-End Transformer for Text Classification
+# **End-to-End Transformer for Text Classification**
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?style=for-the-badge&logo=pytorch)
 ![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models%20%7C%20Spaces-yellow?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 
-An end-to-end project building a Transformer from scratch and fine-tuning DistilBERT for text classification, achieving **94.8% test accuracy** and deployed as a live, interactive demo on Hugging Face Spaces.
+An end-to-end project building a **Transformer from scratch** and fine-tuning **DistilBERT** for text classification, achieving **94.8% test accuracy** and deployed as a live, interactive demo on Hugging Face Spaces.
 
 ---
 
