@@ -1,59 +1,120 @@
-# **End-to-End Transformer for Text Classification**
-> Advanced NLP: Custom Transformer vs. DistilBERT Fine-Tuning
+# **End-to-End Transformer for Text Classification: From Scratch vs. Fine-Tuning**
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?style=for-the-badge&logo=pytorch)
 ![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models%20%7C%20Spaces-yellow?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 
+> Advanced NLP: Custom Transformer vs. DistilBERT Fine-Tuning
+
+### ► Try the Live Demo!
+### [Live Interactive Demo on Hugging Face Spaces](https://huggingface.co/spaces/nabeelshan/distilbert-agnews-classifier) | [Fine-Tuned Model on Hugging Face](https://huggingface.co/nabeelshan/distilbert-finetuned-agnews)
+
 An end-to-end project building a **Transformer from scratch** and fine-tuning **DistilBERT** for text classification, achieving **94.8% test accuracy** and deployed as a live, interactive demo on **Hugging Face Spaces**.
 
 ---
 
-### ► Try the Live Demo!
-
-This project culminates in a deployed Gradio application. You can test the fine-tuned model's performance in real-time.
-
-**[https://huggingface.co/spaces/nabeelshan/distilbert-agnews-classifier](https://huggingface.co/spaces/nabeelshan/distilbert-agnews-classifier)**
-
-![Gradio Demo GIF](https://huggingface.co/spaces/nabeelshan/distilbert-agnews-classifier/resolve/main/demo.gif)
-*(A live demo of the final classifier, built with Gradio and deployed on Hugging Face Spaces)*
-
----
-
 ## Table of Contents
-1. [Project Overview](#1-project-overview)
-2. [Key Features](#2-key-features)
-3. [Final Results & Analysis](#3-final-results--analysis)
-4. [Tech Stack](#4-tech-stack)
-5. [Repository Structure](#5-repository-structure)
-6. [Setup & Usage](#6-setup--usage)
+1. [Project Overview](#-project-overview)
+2. [Key Features](#-key-features)
+3. [Technical Deep Dive](#-technical-deep-dive)
+3. [Final Results & Analysis](#-final-results--analysis)
+4. [Tech Stack](#tech-stack)
+5. [Repository Structure](#repository-structure)
+6. [Setup & Usage](#setup--usage)
 
 ---
 
-## 1. Project Overview
 
-This repository documents a comprehensive investigation into Transformer-based models for text classification on the AG News dataset. The project was executed in two main phases:
+## 🚀 Project Overview
 
-1.  **Phase 1: Build from Scratch:** A custom Transformer model was implemented from the ground up in PyTorch to gain a fundamental understanding of the architecture, including custom positional encodings and multi-head self-attention layers. This model was trained over **160+ epochs** using a **multi-stage optimization** strategy.
+This project presents a comprehensive, end-to-end investigation into Transformer-based text classification on the **AG News dataset**. The work covers the full MLOps lifecycle—from data engineering and model architecture design to multi-stage training, comparative analysis, and final deployment.
 
-2.  **Phase 2: Fine-Tune a SOTA Model:** A pre-trained DistilBERT model was fine-tuned to leverage the power of transfer learning. This phase focused on the practical application of state-of-the-art tools from the Hugging Face ecosystem to achieve maximum performance.
+The exploration was conducted in two primary phases:
 
-The project covers the full **MLOps** lifecycle: data preprocessing, model architecture design, multi-phase training, iterative optimization, final evaluation, and deployment as an interactive web application.
+1.  **Build from Scratch**: A custom Transformer Encoder was implemented in PyTorch to establish a deep, foundational understanding of the architecture, including custom positional encodings and multi-head self-attention. This model was trained for over **160 epochs** using a meticulously documented, multi-stage optimization strategy, achieving a final test accuracy of **90.32%**.
 
----
+2.  **Fine-Tune a Pre-Trained Model**: A state-of-the-art DistilBERT model was fine-tuned using the Hugging Face ecosystem to leverage the power of transfer learning. This approach achieved a superior test accuracy of **94.79%** in just 3 epochs.
 
-## 2. Key Features
-
-- **Custom Transformer Implementation:** A complete, **from-scratch implementation** of a Transformer Encoder in PyTorch.
-- **Advanced Training Techniques:** Multi-stage training pipeline with checkpointing, resumption, and experimentation with various optimizers **(SGD, Adam)** and learning rate schedulers (`StepLR`, `CosineAnnealingLR`).
-- **State-of-the-Art Fine-Tuning:** Efficiently fine-tuned DistilBERT using the Hugging Face `transformers` library, achieving a 94.8% test accuracy.
-- **Comprehensive Evaluation:** Rigorous, multi-phase evaluation with detailed performance logging and visualization.
-- **Live Interactive Demo:** The final model is deployed as a user-friendly Gradio application on Hugging Face Spaces, making the model's capabilities tangible and accessible.
+The project culminates in a head-to-head comparison of the two approaches and a live, interactive web application deployed on Hugging Face Spaces, demonstrating a robust ability to both build and deploy advanced NLP solutions.
 
 ---
 
-## 3. Final Results & Analysis
+## ✨ Key Features
+
+* **Custom Transformer Implementation**: A complete, from-scratch implementation of a `TransformerEncoder`-based classifier in PyTorch, including a custom `PositionalEncoding` layer to build foundational knowledge.
+
+* **Advanced Training Strategy**: A systematic, multi-phase training regimen spanning **160 epochs**, showcasing techniques like checkpointing, optimizer switching (SGD vs. Adam), and dynamic learning rate scheduling (`StepLR`, `CosineAnnealingLR`).
+
+* **State-of-the-Art Fine-Tuning**: Leveraged transfer learning by fine-tuning a pre-trained **DistilBERT** model using the Hugging Face ecosystem, achieving a **94.79% test accuracy** in just 3 epochs.
+
+* **Efficient Data Handling**: An optimized data loading pipeline that sorts input sequences by length to minimize padding, significantly accelerating training throughput.
+
+* **In-Depth Comparative Analysis**: A direct, quantitative comparison between the from-scratch and fine-tuned models, supported by rich visualizations of learning curves and performance metrics using Matplotlib and Seaborn.
+
+* **Interactive Web Demo**: A user-friendly Gradio application deployed on **Hugging Face Spaces** for live, interactive inference, making the final model's capabilities tangible and accessible.
+
+---
+
+## 🔧 Technical Deep Dive
+
+### 1. Custom Transformer Architecture
+
+The core of the from-scratch model is a `ClassificationNet` module built with PyTorch's `nn.TransformerEncoder`.
+
+* **Embedding Layer**: Converts input token indices into dense vectors of `embedding_dim`.
+* **Positional Encoding**: Injects positional information into the embeddings, which is crucial since the self-attention mechanism is permutation-invariant. This is implemented using sine and cosine functions of different frequencies.
+    ```python
+    # src/model.py: PositionalEncoding
+    class PositionalEncoding(nn.Module):
+        def __init__(self, d_model, vocab_size=5000, dropout=0.1):
+            super().__init__()
+            self.dropout = nn.Dropout(p=dropout)
+    
+            pe = torch.zeros(vocab_size, d_model)
+            position = torch.arange(0, vocab_size, dtype=torch.float).unsqueeze(1)
+            div_term = torch.exp(
+                torch.arange(0, d_model, 2).float()
+                * (-math.log(10000.0) / d_model)
+            )
+            pe[:, 0::2] = torch.sin(position * div_term)
+            pe[:, 1::2] = torch.cos(position * div_term)
+            pe = pe.unsqueeze(0)
+            self.register_buffer("pe", pe)
+    
+        def forward(self, x):
+            x = x + self.pe[:, :x.size(1), :]
+            return self.dropout(x)
+    ```
+* **Transformer Encoder**: A stack of `nn.TransformerEncoderLayer` modules processes the sequence. Each layer consists of a multi-head self-attention mechanism and a feed-forward network.
+* **Classifier Head**: A final linear layer maps the mean of the Transformer's output sequence to the number of classes.
+
+### 2. Data Processing Pipeline
+
+The `dataloader.py` script handles the efficient preparation of the AG News dataset.
+
+* **Tokenization & Vocabulary**: Uses `torchtext` to tokenize text and build a vocabulary from the training data.
+* **Length-Based Sorting**: The `NewsDataset` class sorts the training data by text length. This is a key optimization that groups similarly-sized sentences into batches, drastically reducing the amount of `<pad>` tokens needed and improving GPU utilization.
+* **Custom `collate_batch` Function**: Pads sequences within each batch to the maximum length in that batch and prepares tensors for the model.
+    ```python
+    # src/dataloader.py: collate_batch function
+    def collate_batch(batch):
+        label_list, text_list, len_list = [], [], []
+        for (_label, _text) in batch:
+            label_list.append(label_pipeline(_label))
+            processed_text = torch.tensor(text_pipeline(_text), dtype=torch.int64)
+            text_list.append(processed_text)
+        
+        labels = torch.tensor(label_list, dtype=torch.int64)
+        texts = pad_sequence(text_list, batch_first=True) # Pad to max length in the batch
+        return labels.to(DEVICE), texts.to(DEVICE)
+    ```
+
+---
+
+
+
+## 📊 Final Results & Analysis
 
 The two primary models were evaluated on the same held-out test set. The fine-tuned DistilBERT model demonstrated a significant performance improvement over the custom model trained from scratch, highlighting the immense power of transfer learning.
 
@@ -78,7 +139,7 @@ The learning curves for the custom model show a clear story of iterative improve
 
 ---
 
-## 4. Tech Stack
+## Tech Stack
 
 - **Frameworks & Libraries:** PyTorch, Hugging Face (Transformers, Tokenizers, Hub), Gradio, Scikit-learn
 - **Data Science & MLOps:** Pandas, NumPy, Matplotlib, Seaborn
@@ -86,7 +147,7 @@ The learning curves for the custom model show a clear story of iterative improve
 
 ---
 
-## 5. Repository Structure
+## Repository Structure
 
 The repository is organized to professional standards for clarity, reproducibility, and scalability, clearly separating source code, experimental notebooks, data, and outputs.
 
@@ -119,7 +180,7 @@ The repository is organized to professional standards for clarity, reproducibili
 
 ---
 
-## 6. Setup & Usage
+## Setup & Usage
 
 To replicate this project, follow these steps:
 
