@@ -1,4 +1,4 @@
-# **End-to-End Transformer for Text Classification: From Scratch vs. Fine-Tuning**
+# **End-to-End NLP: From-Scratch Transformer vs. Deployed DistilBERT**
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c?style=for-the-badge&logo=pytorch)
