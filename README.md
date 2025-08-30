@@ -136,9 +136,11 @@ cd NLP-From-Scratch-to-Deployment
 ```
 
 ### 2. Set Up a Virtual Environment
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
+```
 
 ### 3. Run the Experiments
 The notebooks in the `/notebooks` directory document my entire workflow.
