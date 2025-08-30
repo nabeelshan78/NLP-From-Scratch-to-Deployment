@@ -96,6 +96,7 @@ class PositionalEncoding(nn.Module):
         x = x + self.pe[:, :x.size(1), :]
         return self.dropout(x)
 ````
+</details>
 
 <details>
 <summary><strong>Click to see the Optimized Data Collation Logic</strong></summary>
@@ -130,7 +131,7 @@ To replicate this project and my results, follow these steps.
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/YOUR_USERNAME/NLP-From-Scratch-to-Deployment.git](https://github.com/YOUR_USERNAME/NLP-From-Scratch-to-Deployment.git)
+git clone https://github.com/nabeelshan78/NLP-From-Scratch-to-Deployment.git
 cd NLP-From-Scratch-to-Deployment
 ```
 
